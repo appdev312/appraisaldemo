@@ -2,7 +2,9 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';
 
+import 'antd/dist/antd.css';
 import './assets/global.css';
+
 import configureStore, { history } from './store';
 import routes from './routes';
 import * as serviceWorker from './serviceWorker';

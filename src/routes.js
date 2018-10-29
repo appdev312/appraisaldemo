@@ -2,7 +2,7 @@ import React from 'react';
 import { Router } from 'react-router';
 import { Switch, Route, Redirect } from 'react-router-dom';
 
-import HomePage from './pages/home';
+import HomePage from './pages/Home';
 
 export default (history) => (
   <Router history={history}>

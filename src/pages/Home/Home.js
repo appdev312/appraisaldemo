@@ -3,8 +3,9 @@ import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
 
-import './home.css';
+import './Home.css';
 import { propertySearch } from '../../actions/property';
+import PropertyList from '../../components/PropertyList';
 
 class HomePage extends Component {
   componentDidMount() {
@@ -17,7 +18,11 @@ class HomePage extends Component {
     return (
       <React.Fragment>
         { loading && <div>Loading ...</div> }
-        
+        {
+          !loading &&
+          properties.results.length > 0 &&
+          <PropertyList data={properties.results} />
+        }
       </React.Fragment>
     );
   }
