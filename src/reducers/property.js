@@ -8,12 +8,16 @@ import {
 } from '../constants';
 
 const initialState = {
-  properties: {
+  propertySearch: {
     results: [],
+    loading: false,
+    error: null,
   },
-  property: {},
-  loading: false,
-  error: null,
+  singleProperty: {
+    results: [],
+    loading: false,
+    error: null,
+  },
 };
 
 export default (state = initialState, action) => {
@@ -21,43 +25,61 @@ export default (state = initialState, action) => {
     case PROPERTY_SEARCH + REQUEST:
       return {
         ...state,
-        loading: true,
-        error: null,        
+        propertySearch: {
+          results: [],
+          loading: true,
+          error: null,
+        },        
       };
 
     case PROPERTY_SEARCH + SUCCESS:
       return {
         ...state,
-        properties: action.payload,
-        loading: false,
+        propertySearch: {
+          ...state.propertySearch,
+          results: action.payload.results,
+          loading: false,
+        },
       };
 
     case PROPERTY_SEARCH + FAILED:
       return {
         ...state,
-        loading: false,
-        error: action.payload,
+        propertySearch: {
+          ...state.propertySearch,
+          error: action.payload,
+          loading: false,
+        },
       };
 
     case SINGLE_PROPERTY + REQUEST:
       return {
         ...state,
-        loading: true,
-        error: null,        
+        singleProperty: {
+          results: [],
+          loading: true,
+          error: null,
+        },        
       };
 
     case SINGLE_PROPERTY + SUCCESS:
       return {
         ...state,
-        property: action.payload,
-        loading: false,
+        singleProperty: {
+          ...state.singleProperty,
+          results: action.payload.results,
+          loading: false,
+        },
       };
 
     case SINGLE_PROPERTY + FAILED:
       return {
         ...state,
-        loading: false,
-        error: action.payload,
+        singleProperty: {
+          ...state.singleProperty,
+          error: action.payload,
+          loading: false,
+        },
       };
 
     default:
